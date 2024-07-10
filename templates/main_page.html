@@ -1,0 +1,241 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-xl my-content font-color" style="padding-bottom:1%"><br>
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner" style="border-radius: 2pc;">
+            <div class="carousel-item active">
+                <img style="border-radius: 1pc;" width="200px"
+                     src="https://zoommer.ge/_next/image?url=https%3A%2F%2Fs3.zoommer.ge%2Fsite%2Fbf8fe87a-5971-45fe-9e08-a35d05db3b95_Thumb.jpeg&w=256&q=50"
+                     class="d-block w-100% center" alt="image discription">
+            </div>
+            <div class="carousel-item">
+                <img style="border-radius: 1pc;" width="200px"
+                     src="https://zoommer.ge/_next/image?url=https%3A%2F%2Fs3.zoommer.ge%2Fzoommer-images%2Fthumbs%2F0198933_apple-airpods-pro-2-with-usb-c-charging-case-mtjv3-2023_550.jpeg&w=256&q=50"
+                     class="d-block w-100% center" alt="image discription">
+            </div>
+            <div class="carousel-item">
+                <img style="border-radius: 1pc;" width="200px"
+                     src="https://zoommer.ge/_next/image?url=https%3A%2F%2Fs3.zoommer.ge%2Fsite%2F32f68f79-9bc9-404d-aa7d-3ed2c0bb2073_Thumb.jpeg&w=256&q=50"
+                     class="d-block w-100% center" alt="image discription">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <br>
+    <h1 class="text-white">Mobiles</h1>
+    <div class="row row-cols-1 row-cols-md-3 g-4" id="hp">
+        {% for mobile in mobiles %}
+        <div class="col-lg-3 ">
+            <div class="card" style="width: 100%; top: 2%; height: 525px; border-radius: 1pc;">
+                <img style="border-radius: 1pc;" height="290px" src="{{mobile.image_url}}"
+                     class="card-img-top" alt="Image description">
+                <div class="card-body">
+                    <h5 class="card-title">{{mobile.name}}</h5>
+                    <p class="card-text text">{{mobile.price}} ₾</p>
+                    <a href="/product/{{mobile.id}}" class="btn btn-primary" style="position:bottom ">Buy</a>
+                    {% if current_user.role == "admin" %}
+                    <a href="/edit_product/{{mobile.id}}" class="btn btn-primary" style="position:bottom ">Edit</a>
+                    <a href="/delete_product/{{mobile.id}}" class="btn btn-primary" style="position:bottom ">Delete</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+    <br>
+    <div class="container-fluid mt-4 p-5 jumb-color font-color rounded ">
+        <h1 class="text-white">Bestseller Products</h1>
+        <div class="row align-items-center">
+            <div class="col" style="border-radius: 1pc;">
+                <div class="card mb-3" style="max-width: 590px; border-radius: 1pc; ">
+                    <div class="row g-0" style="border-radius: 1pc;">
+                        <div class="col-md-4 d-flex align-items-center justify-content-center "
+                             style="border-radius: 1pc;">
+                            <img height="100%"
+                                 src="https://zoommer.ge/_next/image?url=https%3A%2F%2Fs3.zoommer.ge%2Fsite%2F25802b8c-68f8-49aa-9e6d-069d2ce91afa_Thumb.jpeg&w=256&q=50"
+                                 class="img-fluid rounded-start " alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body1" style="padding: 15px;">
+                                <h5 class="card-title">Apple iPhone 15 Pro Max</h5>
+                                <div class="row justify-content-center">
+                                    <div class="col">
+                                        <p class="card-text text">ბრენდი Apple<br>
+                                        </p>
+                                    </div>
+                                    <div class="col">
+                                        <p class="card-text text">ფასი: 3899.00 ₾</p>
+                                        <a href="/product/2" class="btn btn-primary"
+                                           style="position:bottom-right ">Buy</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card mb-3" style="max-width: 590px; border-radius: 1pc; ">
+                    <div class="row g-0" style="border-radius: 1pc;">
+                        <div class="col-md-4 d-flex align-items-center justify-content-center "
+                             style="border-radius: 1pc;">
+                            <img height="100%"
+                                 src="https://zoommer.ge/_next/image?url=https%3A%2F%2Fs3.zoommer.ge%2Fsite%2F388ed075-6c4f-40ee-bcc5-838a420fc625_Thumb.jpeg&w=256&q=50"
+                                 class="img-fluid rounded-start " alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body1" style="padding: 15px;">
+                                <h5 class="card-title"> Samsung Galaxy S24 Ultra </h5>
+                                <div class="row justify-content-center">
+                                    <div class="col">
+                                        <p class="card-text text">ბრენდი Samsung<br>
+                                        </p>
+                                    </div>
+                                    <div class="col">
+                                        <p class="card-text text">ფასი: 3599.00 ₾</p>
+                                        <a href="/product/3" class="btn btn-primary"
+                                           style="position:bottom-right ">Buy</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <h1 class="text-white">ear buds</h1>
+    <div class="col-12 row">
+        {% for buds in ear_buds %}
+        <div class="col-3">
+            <div class="card" style="width: 100%; top: 2%; height: 525px; border-radius: 1pc;">
+                <img style="border-radius: 1pc;" height="290px" src="{{buds.image_url}}"
+                     class="card-img-top" alt="Image discription">
+                <div class="card-body">
+                    <h5 class="card-title">{{buds.name}}</h5>
+                    <p class="card-text text">{{buds.price}} ₾</p>
+                    <a href="/product/{{buds.id}}" class="btn btn-primary"
+                       style="position:bottom ">Buy</a>
+                    {% if current_user.role == "admin" %}
+                    <a href="/edit_product/{{buds.id}}" class="btn btn-primary" style="position:bottom ">Edit</a>
+                    <a href="/delete_product/{{buds.id}}" class="btn btn-primary"
+                       style="position:bottom ">Delete</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div><br>
+    <h1 class="text-white">smartwatches</h1>
+    <div class="col-12 row align-items-center ">
+        {% for watches in smartwatches %}
+        <div class="col-3">
+            <div class="card" style="width: 100%; top: 2%; height: 525px; border-radius: 1pc;">
+                <img style="border-radius: 1pc;" height="290px" src="{{watches.image_url}}"
+                     class="card-img-top" alt="Image discription">
+                <div class="card-body">
+                    <h5 class="card-title">{{watches.name}}</h5>
+                    <p class="card-text text">{{watches.price}} ₾</p>
+                    <a href="/product/{{watches.id}}" class="btn btn-primary"
+                       style="position:bottom ">Buy</a>
+                    {% if current_user.role == "admin" %}
+                    <a href="/edit_product/{{watches.id}}" class="btn btn-primary" style="position:bottom ">Edit</a>
+                    <a href="/delete_product/{{watches.id}}" class="btn btn-primary"
+                       style="position:bottom ">Delete</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div><br>
+</div>
+
+{% endblock %}
+<style>
+    /* Color Scheme */
+body {
+  background-color: #00a896; /* Cyan background */
+  color: #fff; /* White text */
+  font-family: 'Arial', sans-serif;
+}
+
+.my-content {
+  background-color: #fff; /* White container for content */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+h1, h2, h3, h4, h5 {
+  color: #00a896; /* Cyan for headings */
+}
+
+.btn-primary {
+  background-color: #00a896; /* Cyan for buttons */
+  border: none;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #008072; /* Darker cyan on hover */
+}
+
+.jumb-color {
+  background-color: #00a896; /* Cyan for jumbotron */
+}
+
+.card-body1 {
+  background-color: #fff; /* White for card body */
+  border-radius: 10px;
+}
+
+.card-title {
+  color: #00a896; /* Cyan for card title */
+}
+
+/* Additional Styling */
+.row {
+  margin-bottom: 20px;
+}
+
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for cards */
+}
+
+.img-fluid {
+  border-radius: 10px; /* Rounded corners for images */
+}
+
+/* Optional: Use this for a subtle hover effect on cards */
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .row-cols-md-3 {
+    row-cols-1;
+  }
+}
+</style>
